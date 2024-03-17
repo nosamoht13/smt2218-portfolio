@@ -1,4 +1,5 @@
 {
+  "homepage": "https://nosamoht13.github.io/smt2218-portfolio",
   "name": "mywebsite",
   "version": "0.1.0",
   "private": true,
@@ -16,14 +17,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "yarn build",
-    "deploy" :"gh-pages -d build",
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-"homepage":"https://nosamoht13.github.io/my-website",
+  
   "eslintConfig": {
     "extends": [
       "react-app",
