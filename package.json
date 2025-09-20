@@ -1,5 +1,5 @@
 {
-  "homepage": "https://nosamoht13.github.io/smt2218-portfolio",
+  "homepage": "https://samthomason.com",
   "name": "mywebsite",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +21,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build -b gh-pages -c samthomason.com",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
