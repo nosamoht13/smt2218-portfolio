@@ -1,0 +1,247 @@
+/* =========================
+   Global Theme Variables
+   ========================= */
+:root{
+  --brand-brown: #5C4033;
+  --bg: rgb(255, 248, 227);
+  --ink: #665d57;
+  --muted: #6B5B53;
+  --accent: #C8A27E;
+  --card: #FFFFFF;
+
+  /* layout helpers */
+  --page-gutter: clamp(24px, 5vw, 64px);
+  --container: 1200px;
+  --space-from-nav: clamp(32px, 6vw, 96px); /* top gap from navbar */
+}
+
+/* =========================
+   Page Background
+   ========================= */
+.home{
+  background: var(--bg);
+  min-height: calc(100vh - 64px);
+  position: relative;
+  overflow: hidden;
+}
+.home::before{
+  content: "";
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 55vw; height: 55vw;
+  max-width: 900px; max-height: 900px;
+  background:
+    radial-gradient(40% 40% at 70% 30%, #f3dfcc 0%, rgba(243,223,204,0) 70%),
+    radial-gradient(30% 30% at 20% 60%, #ecd2b7 0%, rgba(236,210,183,0) 70%);
+  filter: blur(20px);
+  z-index: 0;
+}
+
+/* =========================
+   Hero
+   ========================= */
+.hero{
+  width: min(100%, calc(var(--container) + 2 * var(--page-gutter)));
+  margin-inline: auto;
+  padding: var(--space-from-nav) var(--page-gutter) 8px;
+
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr); /* symmetric columns */
+  gap: clamp(24px, 4vw, 64px);
+  align-items: start;
+  justify-items: start;
+}
+.hero-left{
+  font-size: clamp(28px,7.2vw,28px);
+  text-align: left;
+  justify-self: start;
+  color: var(--muted);
+}
+.hero-right{ justify-self: end; }
+
+/* CTA buttons */
+.cta{ margin-top: 250px; }
+.btn,
+.btn.btn--ghost{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 14px 28px;
+  min-width: 180px;
+  height: 54px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  margin-right: 0;
+}
+.cta .btn + .btn{ margin-left: 14px; }
+.btn{
+  background: var(--brand-brown);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(92,64,51,0.15);
+}
+.btn:hover{ transform: translateY(-1px); box-shadow: 0 8px 18px rgba(92,64,51,0.18); }
+.btn:active{ transform: translateY(0); }
+.btn--ghost{
+  background: transparent;
+  color: var(--brand-brown);
+  border: 2px solid var(--brand-brown);
+}
+
+/* Photo + frame */
+.hero-right img{
+  width: clamp(300px, 32vw, 520px);
+  height: clamp(300px, 32vw, 520px);
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+.photo-frame{
+  box-shadow: none; /* use drop-shadow so gutters remain true */
+  filter: drop-shadow(0 18px 48px rgba(92,64,51,.18));
+  border: 8px solid var(--brand-brown);
+  border-radius: 5px;
+  background: var(--bg);
+  transform: translateY(0) scale(1);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .25s ease;
+}
+.photo-frame:hover{
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 26px 64px rgba(92,64,51,.28), 0 6px 20px rgba(0,0,0,.06);
+  border-color: #6d4b3b;
+}
+.photo-frame img{ transition: filter .35s ease; }
+.photo-frame:hover img{ filter: saturate(1.05) contrast(1.03); }
+.photo-frame:focus-visible{
+  outline: 3px solid rgba(92,64,51,.5);
+  outline-offset: 4px;
+}
+
+/* =========================
+   Lightbox (click to view)
+   ========================= */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+.lightbox img{
+  max-width: min(92vw, 1100px);
+  max-height: 85vh;
+  object-fit: contain;
+  background: var(--bg);
+  border: 8px solid var(--brand-brown);
+  border-radius: 5px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.35);
+}
+.lightbox-close{
+  position: fixed;
+  top: 20px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.6);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lightbox-close:hover{ background: rgba(0,0,0,.75); }
+
+/* =========================
+   Full-width divider
+   ========================= */
+.page-divider{
+  border: 0;
+  height: 4px;
+  background: var(--brand-brown);
+  margin: clamp(48px, 6vw, 96px) var(--page-gutter) 0;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* =========================
+   About + Skills
+   ========================= */
+.about{
+  width: min(100%, calc(var(--container) + 2 * var(--page-gutter)));
+  margin-inline: auto;
+  /* extra bottom padding so last bullet never hits footer */
+  padding: clamp(24px, 4vw, 48px) var(--page-gutter) clamp(72px, 8vw, 120px);
+  display: grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+  gap: clamp(20px, 4vw, 48px);
+  align-items: start;
+  text-align: left;
+}
+.about h2{
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 40px);
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+.about p{ margin: 8px 0 0; color: var(--muted); }
+
+/* make Skills heading match About heading */
+.about-skills h3{
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 40px);
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+
+/* two-column bulleted skills list */
+.about-skills .skills{
+  list-style: disc;
+  padding-left: 1.2rem;
+  margin: 0;
+  column-count: 2;
+  column-gap: clamp(24px, 3vw, 48px);
+}
+.about-skills .skills li{
+  margin: 6px 0;
+  color: var(--muted);
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 860px){
+  .hero{
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .hero-right{ order: -1; }      /* photo above text on mobile */
+  .photo-frame{ margin: 0 auto; }
+  .hero-left h1{ white-space: normal; }
+  .cta{ justify-content: center; }
+
+  .about{ grid-template-columns: 1fr; }
+}
+@media (max-width: 720px){
+  .about-skills .skills{ column-count: 1; }
+}
+@media (min-width: 1200px){
+  .hero-right{ padding-right: 6px; } /* slight visual balance for shadow */
+}
+
+/* =========================
+   Reduced Motion
+   ========================= */
+@media (prefers-reduced-motion: reduce){
+  .photo-frame,
+  .photo-frame img{ transition: none; }
+  .photo-frame:hover{ transform: none; box-shadow: none; }
+}

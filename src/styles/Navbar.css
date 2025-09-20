@@ -1,0 +1,102 @@
+:root{
+  --brand-brown: rgb(92, 64, 51);
+  --nav-height: 80px;      /* navbar height */
+  --maxw: auto;
+  --nav-pad-x: 40px;         /* horizontal padding (0 = flush to edges) */
+  --nav-pad-bottom: 15px;   /* space from bottom edge */
+}
+
+/* Wrapper */
+.navbar{
+  background: var(--brand-brown);
+  color: #fff;
+  width: 100%;
+}
+
+/* Inner container: bottom-align everything */
+.navbar-inner{
+  /* ...keep your existing props... */
+  display: flex;
+  align-items: center;          /* ← was flex-end */
+  justify-content: flex-start;  /* keep brand left */
+  min-height: var(--nav-height);
+  height: var(--nav-height);    /* optional: fixes height exactly */
+  padding: 0 var(--nav-pad-x);  /* remove bottom padding so true center */
+}
+
+/* Brand pinned left */
+.brand{
+  font-weight: 700;
+  font-size: clamp(30px, 2.4vw, 30px);
+  line-height:1;
+}
+
+
+/* links row: center vertically too */
+.nav-links{
+  display: flex;
+  align-items: center;          /* ← was flex-end */
+  gap: 20px;
+  margin-left: auto;            /* keeps links all the way right */
+}
+
+
+.nav-link{
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.nav-link:hover,
+.nav-link.active{ background: rgba(255,255,255,0.14); }
+
+/* Hamburger (mobile) on bottom-right */
+.nav-toggle{
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto;       /* ← send the toggle to the right */
+  align-self: flex-end;    /* bottom align */
+}
+.nav-toggle .bar{
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 800px){
+  .nav-toggle{ display: flex; }
+
+  /* Stack menu under the bar */
+  .nav-links{
+    position: absolute;
+    left: 0; right: 0;
+    top: var(--nav-height);
+    background: var(--brand-brown);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 12px 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease;
+  }
+  .nav-links.open{ max-height: 260px; }
+
+  .nav-link{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 20px;
+    border-radius: 0;
+  }
+}

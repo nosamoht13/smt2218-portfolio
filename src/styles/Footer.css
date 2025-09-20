@@ -1,0 +1,21 @@
+.footer {
+  background-color: rgb(92, 64, 51);   /* brown background */
+  color: white;              /* white text */
+  text-align: center;
+  padding: 10px 12px;            /* less padding → thinner footer */
+  font-size: 0.9rem;         /* slightly smaller text */
+}
+
+.footer .socialMedia {
+  margin-bottom: 10px;        /* tighten spacing */
+}
+
+.footer a {
+  color: white;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #ddd;               /* lighter hover effect */
+}

@@ -1,0 +1,95 @@
+.project {
+  width: 100%;
+  padding: 20px;
+}
+
+.project h1 {
+  color: #3e497a;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.image-grid img {
+  width: 100%; /* Set the width to 100% to fill the container */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+.media-group {
+  margin-bottom: 40px; /* Add space between media groups */
+}
+
+.divider {
+  border: none;
+  height: 2px; /* Increase or decrease thickness of the horizontal line */
+  background-color: #000;
+  margin: 20px 0;
+}
+
+.text {
+  font-size: 18px;
+  color: #3e497a;
+  margin-bottom: 20px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust grid layout */
+  gap: 20px; /* Adjust gap between images */
+}
+
+.media-grid img {
+  width: auto; /* Set width to auto to preserve aspect ratio */
+  height: auto; /* Set height to auto to preserve aspect ratio */
+  max-width: 100%; /* Ensure the image doesn't exceed the container width */
+  max-height: 100%; /* Ensure the image doesn't exceed the container height */
+  border-radius: 10px;
+}
+
+.media-grid video {
+  width: 100%; /* Set the width to 100% to fill the container */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px;
+}
+
+/* Add this at the end of your CSS file */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  max-width: 90%; /* Limit the width of the popup content */
+  max-height: 90%; /* Limit the height of the popup content */
+  overflow: auto; /* Add scrollbar if content exceeds max dimensions */
+  position: relative; /* Relative position to contain absolute positioned elements */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Horizontally center content */
+  align-items: center; /* Vertically center content */
+}
+
+.popup-content img {
+  max-width: 90vw; /* Limit the width of the image to 90% of viewport width */
+  max-height: 90vh; /* Limit the height of the image to 90% of viewport height */
+}
+
+
+.close {
+  position: fixed;
+  top: 10px; /* Adjust as needed */
+  right: 10px; /* Adjust as needed */
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+}
+
+
+
+
+
