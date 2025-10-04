@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var l = window.location;
+        var path = l.pathname.replace(/^\//, '');
+        var search = l.search ? l.search + '&' : '?';
+        var url = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/' + search + 'p=/' + path + l.hash;
+        l.replace(url);
+      })();
+    </script>
+  </head>
+  <body>Redirecting…</body>
+</html>
