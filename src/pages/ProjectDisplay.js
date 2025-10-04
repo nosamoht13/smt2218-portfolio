@@ -1,76 +1,111 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { ProjectList } from '../helpers/ProjectList';
-import '../styles/ProjectDisplay.css';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { ProjectList } from "../helpers/ProjectList";
+import "../styles/ProjectDisplay.css";
 
 function ProjectDisplay() {
-    const { id } = useParams();
-    const project = ProjectList.find((project) => project.id === parseInt(id));
-    const [selectedImage, setSelectedImage] = useState(null);
+  const { id } = useParams();
+  const project = ProjectList.find((project) => project.id === parseInt(id));
+  const [popupMedia, setPopupMedia] = useState(null);
 
-    const handleImageClick = (image) => {
-        setSelectedImage(image);
+  // Close popup with Escape key
+  useEffect(() => {
+    const handleEsc = (event) => {
+      if (event.key === "Escape") setPopupMedia(null);
     };
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, []);
 
-    const handleClosePopup = () => {
-        setSelectedImage(null);
-    };
+  // Scroll to top when project changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [id]);
 
-    if (!project) {
-        return <div>Project not found</div>;
-    }
-
-    const allGroups = [];
-
-    for (let i = 1; project[`images${i}`] !== undefined || project[`videos${i}`] !== undefined; i++) {
-        const images = project[`images${i}`] || [];
-        const videos = project[`videos${i}`] || [];
-
-        const group = (
-            <div key={i} className="media-group">
-                <div className="text">
-                    <p>{project[`text${i}`]}</p>
-                </div>
-                <hr className="divider" /> {/* Horizontal line to separate text and media */}
-                <div className="media-grid">
-                    {/* Render images */}
-                    {images.map((image, index) => (
-                        <img
-                            key={index}
-                            src={image}
-                            alt={`${index + 1}`}
-                            onClick={() => handleImageClick(image)}
-                        />
-                    ))}
-                    {/* Render videos */}
-                    {videos.map((video, index) => (
-                        <video key={index} controls>
-                            <source src={video} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    ))}
-                </div>
-            </div>
-        );
-
-        allGroups.push(group);
-    }
-
+  if (!project) {
     return (
-        <div className="project">
-            <h1>{project.name}</h1>
-            {allGroups}
-            {/* Popup to display full-size image */}
-            {selectedImage && (
-                <div className="popup">
-                    <div className="popup-content">
-                        <span className="close" onClick={handleClosePopup}>&times;</span>
-                        <img src={selectedImage} alt=""/>
-                    </div>
-                </div>
-            )}
-        </div>
+      <div className="project">
+        <h2>Project not found</h2>
+      </div>
     );
+  }
+
+  const handleImageClick = (image) =>
+    setPopupMedia({ type: "image", src: image });
+  const handleVideoClick = (video) =>
+    setPopupMedia({ type: "video", src: video });
+  const handleClosePopup = () => setPopupMedia(null);
+
+  return (
+    <div className="project">
+      <h1>{project.name}</h1>
+
+      {project.sections.map((section, idx) => (
+        <div key={idx} className="media-group">
+          {/* Section text */}
+          {section.text && (
+            <div className="text">
+              <p>{section.text}</p>
+            </div>
+          )}
+
+          {/* Image + Video Grid */}
+          <div className="media-grid">
+            {section.images?.map((image, i) => (
+              <img
+                key={`img-${i}`}
+                src={image}
+                alt={`${project.name} ${i + 1}`}
+                onClick={() => handleImageClick(image)}
+              />
+            ))}
+
+            {section.videos?.map((video, i) => (
+              <div
+                key={`vid-${i}`}
+                className="video-container"
+                onClick={() => handleVideoClick(video)}
+              >
+                <video muted playsInline>
+                  <source src={video} type="video/mp4" />
+                </video>
+              </div>
+            ))}
+          </div>
+
+          {/* PDFs */}
+          {section.pdfs?.map((pdf, i) => (
+            <div key={pdf} className="pdf-group">
+              <div className="pdf-embed">
+                <iframe
+                  src={`${pdf}#zoom=page-fit`}
+                  title={`PDF ${i + 1} for ${project.name}`}
+                ></iframe>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+
+      {/* Popup (image or video fullscreen) */}
+      {popupMedia && (
+        <div className="popup" onClick={handleClosePopup}>
+          <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close" onClick={handleClosePopup}>
+              &times;
+            </span>
+            {popupMedia.type === "image" ? (
+              <img src={popupMedia.src} alt="Full view" />
+            ) : (
+              <video controls autoPlay>
+                <source src={popupMedia.src} type="video/mp4" />
+              </video>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default ProjectDisplay;

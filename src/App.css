@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  --bg: rgb(255, 248, 227);
+  --ink: #665d57; /* this is the brownish color you want */
+  --brand-brown: rgb(92, 64, 51);
+}
+  

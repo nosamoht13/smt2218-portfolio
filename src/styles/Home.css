@@ -12,7 +12,7 @@
   /* layout helpers */
   --page-gutter: clamp(24px, 5vw, 64px);
   --container: 1200px;
-  --space-from-nav: clamp(32px, 6vw, 96px); /* top gap from navbar */
+  --space-from-nav: clamp(32px, 6vw, 96px);
 }
 
 /* =========================
@@ -46,7 +46,7 @@
   padding: var(--space-from-nav) var(--page-gutter) 8px;
 
   display: grid;
-  grid-template-columns: minmax(0,1fr) minmax(0,1fr); /* symmetric columns */
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
   gap: clamp(24px, 4vw, 64px);
   align-items: start;
   justify-items: start;
@@ -101,7 +101,7 @@
   display: block;
 }
 .photo-frame{
-  box-shadow: none; /* use drop-shadow so gutters remain true */
+  box-shadow: none;
   filter: drop-shadow(0 18px 48px rgba(92,64,51,.18));
   border: 8px solid var(--brand-brown);
   border-radius: 5px;
@@ -122,7 +122,7 @@
 }
 
 /* =========================
-   Lightbox (click to view)
+   Lightbox
    ========================= */
 .lightbox{
   position: fixed;
@@ -178,7 +178,6 @@
 .about{
   width: min(100%, calc(var(--container) + 2 * var(--page-gutter)));
   margin-inline: auto;
-  /* extra bottom padding so last bullet never hits footer */
   padding: clamp(24px, 4vw, 48px) var(--page-gutter) clamp(72px, 8vw, 120px);
   display: grid;
   grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
@@ -193,16 +192,12 @@
   letter-spacing: -0.01em;
 }
 .about p{ margin: 8px 0 0; color: var(--muted); }
-
-/* make Skills heading match About heading */
 .about-skills h3{
   margin: 0 0 12px;
   font-size: clamp(22px, 2.2vw, 40px);
   color: var(--muted);
   letter-spacing: -0.01em;
 }
-
-/* two-column bulleted skills list */
 .about-skills .skills{
   list-style: disc;
   padding-left: 1.2rem;
@@ -216,25 +211,117 @@
 }
 
 /* =========================
-   Responsive
+   Responsive (Mobile Scaling)
    ========================= */
-@media (max-width: 860px){
-  .hero{
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  .hero-right{ order: -1; }      /* photo above text on mobile */
-  .photo-frame{ margin: 0 auto; }
-  .hero-left h1{ white-space: normal; }
-  .cta{ justify-content: center; }
+@media (max-width: 860px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-  .about{ grid-template-columns: 1fr; }
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 48px 24px 72px;
+    text-align: center;
+    gap: 28px;
+    box-sizing: border-box;
+  }
+
+  .hero-right {
+    order: -1;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0; /* removes stray inset offset */
+  }
+
+  .photo-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    border-width: 6px;
+    filter: drop-shadow(0 12px 32px rgba(92,64,51,.18));
+    box-sizing: border-box;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* keeps margins visually balanced */
+  .home {
+    padding-inline: max(4vw, 16px);
+  }
+
+   .cta {
+    margin-top: 16px; /* was 32px — moves buttons closer to text */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .cta .btn {
+    min-width: 130px;
+    padding: 12px 20px;
+    font-size: 15.5px;
+    border-radius: 12px;
+  }
+
+  /* optional: add tighter vertical rhythm between intro and buttons */
+  .hero-left h1 {
+    margin-bottom: 6px; /* slightly tighter spacing */
+  }
+
+  .hero-left p {
+    margin-bottom: 8px;
+  }
 }
-@media (max-width: 720px){
-  .about-skills .skills{ column-count: 1; }
+
+
+
+@media (max-width: 600px) {
+  .hero-right img {
+    width: 85vw;
+    height: 85vw;
+  }
+  .hero-left {
+    font-size: 22px;
+  }
+  .about-skills .skills {
+    column-count: 1;
+  }
+  .cta .btn {
+    min-width: 140px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
 }
-@media (min-width: 1200px){
-  .hero-right{ padding-right: 6px; } /* slight visual balance for shadow */
+
+
+@media (max-width: 600px){
+  .hero-right img{
+    width: 80vw;
+    height: 80vw;
+  }
+  .hero-left{
+    font-size: 22px;
+  }
+  .about-skills .skills{
+    column-count: 1;
+  }
+  .cta .btn{
+    min-width: 140px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
 }
 
 /* =========================

@@ -6,7 +6,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="navbar" role="banner">
+    <header className={`navbar ${open ? "expanded" : ""}`} role="banner">
       <div className="navbar-inner">
         <div className="brand">Samuel Thomason</div>
 
@@ -14,7 +14,6 @@ export default function Navbar() {
           className="nav-toggle"
           aria-label="Toggle menu"
           aria-expanded={open}
-          aria-controls="nav-menu"
           onClick={() => setOpen((v) => !v)}
         >
           <span className="bar" />
@@ -22,7 +21,7 @@ export default function Navbar() {
           <span className="bar" />
         </button>
 
-        <nav id="nav-menu" className={`nav-links ${open ? "open" : ""}`} aria-label="Main">
+        <nav className={`nav-links ${open ? "open" : ""}`} aria-label="Main">
           <NavLink to="/" end className="nav-link" onClick={() => setOpen(false)}>
             Home
           </NavLink>

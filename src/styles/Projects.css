@@ -9,9 +9,8 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Use padding-bottom so the page bg shows (not body bg) */
   padding: 24px 0 32px;
-  margin: 0;                           /* remove bottom margin band */
+  margin: 0;
   background-color: var(--bg, rgb(255, 248, 227));
 }
 
@@ -22,58 +21,81 @@ html, body {
   font-size: clamp(24px, 3vw, 36px);
   color: var(--ink, #665d57);
   letter-spacing: -0.01em;
-  font-weight: 800;
+  font-weight: 700  ;
 }
 
 /* Grid: fixed card width + tight horizontal spacing */
 .projectList {
-  width: 70vw;
   display: grid;
-  grid-template-columns: repeat(3, 300px);
-  justify-content: center;
-  column-gap: 32px;       /* tighter left/right spacing between cards */
-  row-gap: 20px;          /* vertical spacing */
+  grid-template-columns: repeat(2, 1fr);  /* always 2 columns */
+  gap: 32px;                              /* space between cards */
+  justify-content: center;                /* center the two columns */
+  max-width: 1100px;                      /* keeps grid centered */
+  width: 100%;
 }
-
 /* Card: white interior, small radius, brown border */
 .projectItem {
-  width: 300px;
-  height: 300px;
-  text-align: center;
-  background: #fff;                                         /* white card body */
-  border: 8px solid var(--brand-brown, rgb(92, 64, 51));
+  background: #fff;
+  border: 6px solid var(--brand-brown, rgb(92, 64, 51));
   border-radius: 6px;
-  margin: 0;                                                /* grid gaps control spacing */
-  box-shadow: none;
-  overflow: hidden;                                         /* image respects radius */
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;      /* each card won’t exceed this */
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.projectItem h1 {
+  display: flex;                      /* use flexbox */
+  align-items: center;                /* vertical centering */
+  justify-content: center;            /* horizontal centering */
+  width: 100%;
+  background: #fff;
+  height: 60px;                       /* fixed height for consistency */
+  font-size: 20px;
+  font-weight: 500;
+  color: #222;
+  margin: 0;
+  border-top: 3px solid var(--brand-brown, rgb(92, 64, 51));
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-sizing: border-box;
+}
+
+.projectItem .bgImage {
+  width: 100%;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.projectItem:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  border-color: #6d4b3b;
+  cursor: pointer;
 }
 
 /* Image area */
 .projectItem .bgImage {
   width: 100%;
-  height: 200px;
+  height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 0;
 }
 
-/* Optional hover */
-.projectItem:hover {
-  box-shadow: 0 6px 18px rgba(92, 64, 51, 0.18);
-  border-color: #6d4b3b;
-  transition: 0.25s ease;
-  cursor: pointer;
-}
-
-/* Card title inside the card */
-.projectItem h1 {
-  font-size: 25px;
-}
 
 /* Responsive breakpoints */
-@media (max-width: 1300px) {
-  .projectList { grid-template-columns: repeat(2, 300px); }
+@media (max-width: 1000px) {
+  .projectList {
+    grid-template-columns: 1fr;   /* one column when screen is smaller */
+  }
+  .projectItem {
+    max-width: 90%;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 800px) {
