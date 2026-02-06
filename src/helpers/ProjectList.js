@@ -146,9 +146,45 @@ import stwiring from "../assets/solarTracker/stwiring.jpg";
 import stworking from "../assets/solarTracker/stworking.mp4";
 import stworking2 from "../assets/solarTracker/stworking2.mp4";
 import today from "../assets/sensonoe/today.jpg"
-
-
-
+import stainlessthreadedpost from "../assets/machining/stainlessthreadedpost.jpeg"
+import camformachinedpartprofhone from "../assets/machining/camformachinedpartprofhone.png"
+import completedpartsv1 from "../assets/machining/completedpartsv1.jpeg"
+import machinedpartprofhone from "../assets/machining/machinedpartprofhone.jpeg"
+import machinedpartsv2 from "../assets/machining/machinedpartsv2.jpeg"
+import millingprocess from "../assets/machining/millingprocess.jpg"
+import stackersamantha from "../assets/machining/stackersamantha.jpeg"
+import blowtorch from "../assets/machineDesign/blowtorch.jpeg"
+import machinedesignprofy from "../assets/machineDesign/machinedesignprofy.mp4"
+import machinedesignslowmo from "../assets/machineDesign/machinedesignslowmo.mp4"
+import slsprint from "../assets/machineDesign/slsprint.jpeg"
+import bannerfootage from "../assets/feijiclub/bannerfootage.MP4"
+import bannerprediction from "../assets/feijiclub/bannerprediction.png"
+import codebannertest from "../assets/feijiclub/codebannertest.png"
+import flagpoleholderwithflagpole from "../assets/feijiclub/flagpoleholderwithflagpole.jpeg"
+import flagpolemount from "../assets/feijiclub/flagpolemount.jpeg"
+import forcewindspeeddata from "../assets/feijiclub/forcewindspeeddata.png"
+import groupbannerbox from "../assets/feijiclub/groupbannerbox.JPG"
+import gwbridgebackgropp from "../assets/feijiclub/gwbridgebackgropp.JPG"
+import mepiercebanner from "../assets/feijiclub/mepiercebanner.JPG"
+import printfarm from "../assets/feijiclub/printfarm.mp4"
+import truckback from "../assets/feijiclub/truckback.JPG"
+import truckbackbanner from "../assets/feijiclub/truckbackbanner.JPG"
+import truckdrivingbanner from "../assets/feijiclub/truckdrivingbanner.JPG"
+import truckleaving from "../assets/feijiclub/truckleaving.JPG"
+import bikebalancingworking from "../assets/compAspects/bikebalancingworking.mp4"
+import csreport from "../assets/compAspects/Report.pdf"
+import closedrobot from "../assets/roboticstudio/closedrobot.jpg"
+import modularity from "../assets/roboticstudio/modularity.jpg"
+import openedrobot from "../assets/roboticstudio/openedrobot.jpg"
+import robot from "../assets/roboticstudio/robot.jpg"
+import roboticstudio from "../assets/roboticstudio/roboticstudio.mp4"
+import rxnwheelbikeview from "../assets/compAspects/rxnwheelbikeview.jpeg"
+import rnwheelview from "../assets/compAspects/rnwheelview.jpeg"
+import machining from "../assets/machining/machining.jpeg"
+import machiningjig from "../assets/machining/machiningjig.jpeg"
+import supergluemethod from "../assets/machining/supergluemethod.jpeg"
+import robotparts from "../assets/roboticstudio/robotparts.jpeg"
+import machinedesignthumb from "../assets/machineDesign/machinedesignthumb.jpeg"
 
 
 
@@ -177,7 +213,13 @@ export const ProjectList = [
             </>
         ),
       },
-      { text: "2025 competition team", images: [comppic] },
+      { text: "2026 competition requires the plane to pull a banner behind it. In order to get some sense of what the relationship between the banner size, airspeed, and drag force, we did some testing:", images: [truckbackbanner] },
+      { text: "Everything began in the machine shop, where I machined the mount for the pole that would support the banner during testing.", images: [flagpolemount,flagpoleholderwithflagpole] },
+      { text: "Then, we drove out to New Jersey across the George Washington Bridge and did some testing of the drag force on the banner at different airspeeds.", images: [truckleaving, gwbridgebackgropp,groupbannerbox,truckback, mepiercebanner] },
+      { text: "On the first try, the data was corrupted. On the second try, the data was simply not recorded. On the third try, we finally got some data (Testing took almost 2 whole months...)", images: [truckdrivingbanner] },
+      { text: "Footage of the banner actually being tested", videos: [bannerfootage] },
+      { text: "And a snapshot of the data analysis process:", images: [codebannertest,forcewindspeeddata,bannerprediction] },
+      { text: "As for the 2026 competition team, big things are happening. We are almost done with our composite fuselage (first time we have tried that!)", videos: [printfarm] },
       { text: "2025 competition aircraft 3-view", pdfs: [pdf1] },
       { text: "2025 competition aircraft payload overview", pdfs: [pdf2] },
       { text: "2025 competition aircraft exploded view", pdfs: [pdf3] },
@@ -192,8 +234,89 @@ export const ProjectList = [
       { text: "Wind tunnel and flight testing", images: [iphone1, iphone2], videos: [flight] },
     ],
   },
+
     {
     id: 1,
+    name: "Machining",
+    thumbnail: flagpolemount,
+    sections: [
+      { text: "I was hired by Professor James Hone of Columbia University's Mechanical Engineering Department to help manufacture some parts for his research lab.", images: [completedpartsv1, machinedpartsv2] },
+      { text: "Here is a behind the scenes of a cam program and the finished part:", images: [camformachinedpartprofhone, machinedpartprofhone] },
+      { text: "I have found that the revolutionary tape and superglue method is especially useful for fast, simple workholding", images: [millingprocess,machining,machiningjig,supergluemethod] },
+      { text: "Somne work on the TRAK lathe, a threaded post I made of 316L Stainless Steel (very annoying machining material properties)", images: [stainlessthreadedpost] },
+      { text: "My machined parts being put to use in groundbreaking research efforts", images: [stackersamantha] },
+      { text: "Machining an aluminum pole holder for the airplane club:", images: [flagpolemount, flagpoleholderwithflagpole] },
+      { text: "The Tormach and Fryer milling machines, both of which I am certified to use", images: [tormach, fryer] },
+      { text: "One of my first parts", images: [acrylicblock], videos: [millingvid] },
+      { text: "Extraneous images taken during various milling procedures", images: [setup, nuclearSoln] },
+    ],
+  },
+
+   {
+    id: 2,
+    name: "Machine Design",
+    thumbnail: machinedesignthumb,
+  sections: [
+  {
+    text: (
+      <>
+        This course is required for all senior mechanical engineers at Columbia. The objective of this class is to learn about machines in industry settings, and concurrently utilize that knowledge to build one of our own. The machine is to press 1 of 3 button pairs depending on which lights up, gaining a point per each sucessful press. Occasionally, the green bonus button will light up, and you are able to press it to gain 3 points. 
+
+        Our team chose an unconventional, overengineered approach. We compacted the entire 4 bar linkage into an eight of the form factor that other teams had. Where other teams had heavy aluminum linkages, we had light weight SLS nylon components. Our follow link was manufactured from a malleable galvanized stell wire that was then heat treated to become stiff and resistive. 
+
+        We scored 308 points over a 1 minute testing period, setting a record for our class (second highest was 200), as well as the previous years, (score to beat was 220).  
+        </>
+    ),
+  },
+  { text: "The propane blowtorch and steel wire I bought and used to manufacture a component in the machine: ", images: [blowtorch]},
+  { text: "Video of it running in slow motion:", videos: [machinedesignslowmo]},
+  { text: "Video of demonstration to Professor Yevgeniy Yesilevskiy:", videos: [machinedesignprofy]},
+  { text: "SLS printed main link that weighed around `~20 g where other groups had aluminum links weighing at least 100 g", pdfs: [slsprint]},
+
+],
+  },
+
+       {
+    id: 3,
+    name: "Computational Aspects of Robotics",
+    thumbnail: rnwheelview,
+  sections: [
+  {
+    text: (
+      <>
+        This is the capstone of a Columbia CS course called Computational Aspects of Robotics. We were taught about the intersection between robots and coding, and had to pick a project to showcase our understanding. In conjunction with Shah Rifat Alam Bhuiyan, we were able to put together a reaction wheel balancing bike.
+        </>
+    ),
+  },
+  { text: "What the bike looks like ", images: [rnwheelview,rxnwheelbikeview]},
+  { text: "Video of it running:", videos: [bikebalancingworking]},
+  { text: "Report that captures the all of the technical details of this project.", pdfs: [csreport]},
+
+],
+  },
+
+        {
+    id: 4,
+    name: "Robotics Studio",
+    thumbnail: robot,
+  sections: [
+  {
+    text: (
+      <>
+        This course allows students to design and implement their very own quadruped robot. Follow along to see my experience: 
+        </>
+    ),
+  },
+  { text: "The robot was designed to be very modular", images: [modularity,robotparts]},
+  { text: "Robot in opened and closed configuration:", images: [openedrobot,closedrobot]},
+  { text: "Glamor photo of the robot", images: [robot]},
+  { text: "Video summarizing the experience (volume up especially if you like Star Wars!):", videos: [roboticstudio]},
+  
+],
+  },
+
+    {
+    id: 5,
     name: "MECE E3610 Manufacturing Racecar Project",
     thumbnail: require("../assets/manufacturing/bluecast1.jpg"),
     sections: [
@@ -209,7 +332,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 2,
+    id: 6,
     name: "Vukelic Group Research",
     thumbnail: vukethumb,
     sections: [
@@ -226,7 +349,7 @@ export const ProjectList = [
     ],
   }, 
   {
-    id: 3,
+    id: 7,
     name: "Sensoneo Slovakia",
     thumbnail: explodedsensor,
     sections: [
@@ -241,7 +364,7 @@ export const ProjectList = [
   },
 
   {
-    id: 4,
+    id: 8,
     name: "Schroeder 09 Engine",
     thumbnail: schroeder09thumb,
     sections: [
@@ -251,7 +374,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 5,
+    id: 9,
     name: "Solar Tracker",
     thumbnail: stcloseup,
     sections: [
@@ -262,7 +385,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 6,
+    id: 10,
     name: "Motobecane Mobylette Restoration",
     thumbnail: mop,
     sections: [
@@ -274,7 +397,7 @@ export const ProjectList = [
     ],
   },
    {
-    id: 7,
+    id: 11,
     name: "PC Build",
     thumbnail: pcthumb,
   sections: [
@@ -305,8 +428,10 @@ export const ProjectList = [
 
 ],
   },
+
+  
   {
-    id: 8,
+    id: 12,
     name: "Columbia University Robotics Club",
     thumbnail: milling,
     sections: [
@@ -322,7 +447,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 9,
+    id: 13,
     name: "Art Of Engineering Project",
     thumbnail: thumbnailaoe,
     sections: [
@@ -331,18 +456,9 @@ export const ProjectList = [
       { text: "Final product", images: [final, thumbnailaoe] },
     ],
   },
+
   {
-    id: 10,
-    name: "Machining",
-    thumbnail: tormach,
-    sections: [
-      { text: "The Tormach and Fryer milling machines, both of which I am certified to use", images: [tormach, fryer] },
-      { text: "One of my first parts", images: [acrylicblock], videos: [millingvid] },
-      { text: "Extraneous images taken during various milling procedures", images: [setup, nuclearSoln] },
-    ],
-  },
-  {
-    id: 11,
+    id: 14,
     name: "Ball Mill Creation",
     thumbnail: insideBottle,
     sections: [
@@ -351,7 +467,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 12,
+    id: 15,
     name: "Craftsman Jigsaw",
     thumbnail: craftsman1,
     sections: [
@@ -360,7 +476,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 13,
+    id: 16,
     name: "Nixie Clock",
     thumbnail: assy,
     sections: [
@@ -370,7 +486,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 14,
+    id: 17,
     name: "Hydrogen Gas Generator",
     thumbnail: generator,
     sections: [
@@ -379,7 +495,7 @@ export const ProjectList = [
     ],
   },
   {
-    id: 15,
+    id: 18,
     name: "Electroplating",
     thumbnail: chcoo,
     sections: [
